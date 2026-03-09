@@ -114,6 +114,9 @@ def parse_pdf(pdf_path: str) -> dict:
                 all_text += page_text + '\n'
 
                 # Extract table from page
+                print(f"Page {page.page_number}: found {len(page.extract_tables())} tables", file=sys.stderr)
+                words = page.extract_words()
+                print(f"Page {page.page_number}: first 5 words: {words[:5]}", file=sys.stderr)
                 tables = page.extract_tables()
                 for table in tables:
                     for row in table:
